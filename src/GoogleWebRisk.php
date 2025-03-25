@@ -59,7 +59,7 @@ class GoogleWebRisk
      * @param  $url  string
      * @return bool
      */
-    public function isSafe($url)
+    public static function isSafe($url)
     {
         if ($this->checkUrl($url) === []) {
             return true;
