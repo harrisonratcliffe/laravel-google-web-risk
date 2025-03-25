@@ -15,7 +15,7 @@ class GoogleWebRisk
      * @param  $url  string
      * @return array JSON
      */
-    public static function checkUrl($url)
+    public function checkUrl($url)
     {
         $postUrl = 'https://webrisk.googleapis.com/v1/uris:search?key='.config('google-web-risk.google.api_key')."&uri=$url";
 
@@ -59,7 +59,7 @@ class GoogleWebRisk
      * @param  $url  string
      * @return bool
      */
-    public static function isSafe($url)
+    public function isSafe($url)
     {
         if ($this->checkUrl($url) === []) {
             return true;
