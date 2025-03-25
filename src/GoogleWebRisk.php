@@ -2,36 +2,33 @@
 
 namespace Harrisonratcliffe\LaravelGoogleWebRisk;
 
-
-class GoogleWebRisk {
-
-
-    function __construct() {
-        $this->urls = array();
+class GoogleWebRisk
+{
+    public function __construct()
+    {
+        $this->urls = [];
     }
-
-
 
     /**
      * Invokes the Google Web Risk API
      *
-     * @param $url string
+     * @param  $url  string
      * @return array JSON
      */
     public static function checkUrl($url)
     {
-        $postUrl = 'https://webrisk.googleapis.com/v1/uris:search?key=' . config('google-web-risk.google.api_key') . "&uri=$url";
+        $postUrl = 'https://webrisk.googleapis.com/v1/uris:search?key='.config('google-web-risk.google.api_key')."&uri=$url";
 
         $threatTypes = config('google-web-risk.google.threat_types');
 
-        if (!empty($threatTypes) && is_array($threatTypes)) {
+        if (! empty($threatTypes) && is_array($threatTypes)) {
             $threatTypesParams = array_map(function ($type) {
-                return 'threatTypes=' . urlencode($type);
+                return 'threatTypes='.urlencode($type);
             }, $threatTypes);
 
             $threatTypesQuery = implode('&', $threatTypesParams);
 
-            $postUrl .= '&' . $threatTypesQuery;
+            $postUrl .= '&'.$threatTypesQuery;
         }
 
         $ch = curl_init();
@@ -39,10 +36,10 @@ class GoogleWebRisk {
         curl_setopt($ch, CURLOPT_URL, $postUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',
-            'Connection: Keep-Alive'
-        ));
+            'Connection: Keep-Alive',
+        ]);
 
         $data = curl_exec($ch);
         $responseDecoded = json_decode($data, true);
@@ -56,18 +53,18 @@ class GoogleWebRisk {
         return $responseDecoded;
     }
 
-
     /**
      * Checks whether a url is safe or not
      *
-     * @param  $url string
-     * @return boolean
+     * @param  $url  string
+     * @return bool
      */
-    public function isSafe($url) {
+    public function isSafe($url)
+    {
         if ($this->checkUrl($url) === []) {
             return true;
         }
+
         return false;
     }
-
 }
