@@ -30,9 +30,6 @@
         "test": "phpunit"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.0"
-        },
         "laravel": {
             "providers": [
                 "Harrisonratcliffe\\LaravelGoogleWebRisk\\GoogleWebRiskServiceProvider"
