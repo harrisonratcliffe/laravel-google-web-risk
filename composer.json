@@ -1,0 +1,45 @@
+{
+    "name": "harrisonratcliffe/laravel-google-web-risk",
+    "description": "Laravel package to allow you to easily integrate the Google Web Risk API into your application",
+    "keywords": [
+        "laravel",
+        "web risk",
+        "Google",
+        "malware",
+        "URL",
+        "safe",
+        "check"
+    ],
+    "homepage": "https://github.com/harrisonratcliffe/laravel-google-web-risk",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Harrison Ratcliffe",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Harrisonratcliffe\\LaravelGoogleWebRisk\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.0"
+        },
+        "laravel": {
+            "providers": [
+                "Harrisonratcliffe\\LaravelGoogleWebRisk\\GoogleWebRiskServiceProvider"
+            ],
+            "aliases": {
+                "GoogleWebRisk": "Harrisonratcliffe\\LaravelGoogleWebRisk\\Facade\\GoogleWebRisk"
+            }
+        }
+    }
+}
