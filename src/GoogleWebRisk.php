@@ -13,17 +13,17 @@ class GoogleWebRisk
     public static function checkUrl($url)
     {
         $encodedUrl = rawurlencode($url);
-        $postUrl = 'https://webrisk.googleapis.com/v1/uris:search?key=' . config('google-web-risk.google.api_key') . "&uri=$encodedUrl";
+        $postUrl = 'https://webrisk.googleapis.com/v1/uris:search?key='.config('google-web-risk.google.api_key')."&uri=$encodedUrl";
 
         $threatTypes = config('google-web-risk.google.threat_types');
 
-        if (!empty($threatTypes) && is_array($threatTypes)) {
+        if (! empty($threatTypes) && is_array($threatTypes)) {
             $threatTypesParams = array_map(function ($type) {
-                return 'threatTypes=' . urlencode($type);
+                return 'threatTypes='.urlencode($type);
             }, $threatTypes);
 
             $threatTypesQuery = implode('&', $threatTypesParams);
-            $postUrl .= '&' . $threatTypesQuery;
+            $postUrl .= '&'.$threatTypesQuery;
         }
 
         $ch = curl_init();
@@ -47,7 +47,6 @@ class GoogleWebRisk
 
         return $responseDecoded;
     }
-
 
     /**
      * Checks whether a url is safe or not
