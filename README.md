@@ -1,17 +1,15 @@
-# Safebrowsing
+# Laravel Google Web Risk
 [![Latest Stable Version](https://poser.pugx.org/harrisonratcliffe/laravel-google-web-risk/v/stable.svg)](https://packagist.org/packages/harrisonratcliffe/laravel-google-web-risk) [![Total Downloads](https://poser.pugx.org/harrisonratcliffe/laravel-google-web-risk/downloads.svg)](https://packagist.org/packages/harrisonratcliffe/laravel-google-web-risk) [![License](https://poser.pugx.org/harrisonratcliffe/laravel-google-web-risk/license.svg)](https://packagist.org/packages/harrisonratcliffe/laravel-google-web-risk)
 
-This is a Laravel package to enable you to easily use  the Google Web Risk API.
-
-Right now it's only using the Search API, but I'll be updating it to include the remaining APIs later. It's free up to 100k requests per month.
-
 __This package requires that you have a Google API key. It absolutely will not work without one.__
-
-# Laravel Google Web Risk
 
 ## Overview
 
 The `harrisonratcliffe/laravel-google-web-risk` package provides a simple interface for integrating with the Google Web Risk API to check if URLs are harmful or not, leveraging Google's threat intelligence. This package allows developers to assess the safety of URLs based on predefined threat types, making it an essential tool for web applications that require enhanced security measures.
+
+Right now it's only using the Search API, but I'll be updating it to include the remaining APIs later. It's free up to 100k requests per month.
+
+__This package requires that you have a Google API key. It absolutely will not work without one.__
 
 ## Installation
 
